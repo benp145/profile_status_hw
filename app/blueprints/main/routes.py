@@ -52,7 +52,7 @@ def contact():
 def profile():
     u = User.query.get(current_user.get_id())
     context = {
-        'posts': Post.query.filter_by(user_id=u.get_id()).all()
+        'posts': Post.query.filter_by(user_id=u.get_id()).order_by(Post.date_created.desc()).all()
         # 'posts': Post.query.filter_by(user=u).all()
     }
     if request.method == 'POST':
